@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 80px rgba(255, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 0 0 120px rgba(255, 0, 0, 0.7), inset 0 0 50px rgba(255, 0, 0, 0.5);
+  }
+  100% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 80px rgba(255, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 0, 0.3);
+  }
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+  50% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; }
+  100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+}
+
+@keyframes batHover {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(-5px, -5px) rotate(-5deg) scale(1.1); }
+  75% { transform: translate(5px, 5px) rotate(5deg) scale(0.9); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+@keyframes batFlyLeft {
+  0% { transform: translateX(100vw) translateY(0) rotate(10deg); }
+  100% { transform: translateX(-100px) translateY(-50px) rotate(-10deg); }
+}
+
+@keyframes batFlyRight {
+  0% { transform: translateX(-100px) translateY(0) rotate(-10deg); }
+  100% { transform: translateX(100vw) translateY(-30px) rotate(10deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,60 @@
+import React, { useState } from 'react';
+
+export default function JadelaChatSexy() {
+  const [messages, setMessages] = useState([
+    { sender: 'jadela99', text: 'Hey there... I\'m Jadela99, part of TheFreek team. 🦇 Ready for a thrilling chat?' }
+  ]);
+  const [input, setInput] = useState('');
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+    setMessages([...messages, { sender: 'you', text: input }]);
+    setTimeout(() => {
+      setMessages(prev => [
+        ...prev,
+        { sender: 'jadela99', text: 'Mmm, intriguing... Let\'s dive deeper. 🔥' }
+      ]);
+    }, 800);
+    setInput('');
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-red-900 to-black p-4 relative">
+      {/* Decorative Bats */}
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Bat" className="w-10 h-10 absolute top-2 left-2 animate-pulse" />
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Bat" className="w-10 h-10 absolute top-2 right-2 animate-pulse" />
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Bat" className="w-10 h-10 absolute bottom-2 left-2 animate-pulse" />
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Bat" className="w-10 h-10 absolute bottom-2 right-2 animate-pulse" />
+
+      <div className="w-full max-w-md bg-black border-4 border-red-700 rounded-2xl shadow-2xl flex flex-col text-red-300" style={{ fontFamily: 'monospace' }}>
+        <div className="bg-red-900 text-red-200 p-4 rounded-t-2xl text-lg font-bold flex items-center">
+          🦇 Chat with Jadela99
+        </div>
+        <div className="flex-1 p-4 space-y-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
+          {messages.map((msg, index) => (
+            <div key={index} className={`flex ${msg.sender === 'you' ? 'justify-end' : 'justify-start'}`}>
+              <div className={`px-4 py-2 rounded-xl shadow ${msg.sender === 'you' ? 'bg-red-700 text-white' : 'bg-red-800 text-red-100'}`}>
+                <strong>{msg.sender === 'you' ? 'You' : 'jadela99'}:</strong> {msg.text}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="p-3 border-t border-red-800 flex">
+          <input
+            className="flex-1 bg-red-950 text-white p-2 rounded-l-lg focus:outline-none placeholder-red-400"
+            placeholder="Type your message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          />
+          <button
+            className="bg-red-700 hover:bg-red-600 text-white px-4 rounded-r-lg"
+            onClick={handleSend}
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
